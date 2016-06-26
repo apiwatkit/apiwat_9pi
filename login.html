@@ -1,0 +1,48 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+<script type="text/javascript" src="global.js"></script>
+<script type="text/javascript">
+if(window.localStorage.getItem("IGCode") != null){
+	usercode = window.localStorage.getItem("IGCode");
+} else {
+	if(getParameterByName("code")){
+		usercode = getParameterByName("code");
+		
+		if (typeof(Storage) !== "undefined") {
+			localStorage.setItem("IGCode", usercode);
+		}
+	} else {
+		window.location.href = "https://www.instagram.com/oauth/authorize/?client_id=" + client_id + "&redirect_uri=" + weburl + "login.html&scope=public_content+likes&response_type=code";
+	}
+}
+
+if(usercode != "" && !getParameterByName("token_flag")){
+	window.location.href = "https://api.instagram.com/oauth/authorize/?client_id=" + client_id + "&redirect_uri=" + weburl + "login.html?token_flag=y&response_type=token";
+} else if(usercode != "" && getParameterByName("token_flag")){
+	access_token = window.location.href.substring(window.location.href.indexOf("#access_token=")+14);
+
+	if (typeof(Storage) !== "undefined") {
+		localStorage.setItem("IGToken", access_token);
+	}
+
+	if(fullname == ""){
+		$.ajax({
+			url: "https://api.instagram.com/v1/users/self/?access_token=" + access_token,
+			dataType: 'jsonp',
+			type: 'GET',
+			success: function(data){
+				fullname = data.data.full_name;
+
+				if (typeof(Storage) !== "undefined") {
+					localStorage.setItem("IGFullname", fullname);
+				}
+
+				window.opener.location.reload(true);
+				window.close();
+			},
+			error: function(data){
+				console.log(data);
+			}
+		});
+	}
+}
+</script>

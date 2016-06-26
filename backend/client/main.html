@@ -1,0 +1,14 @@
+<head>
+	<title>Tracking API</title>
+</head>
+<body>
+	{{>	api}}
+</body>
+
+<template name="api">
+<ul>
+{{#each actionList}}
+	<li>{{record}}</li>
+ {{/each}}
+ </ul>
+</template>

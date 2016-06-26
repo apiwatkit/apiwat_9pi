@@ -1,0 +1,1 @@
+IGAction = new Mongo.Collection('IGAction');

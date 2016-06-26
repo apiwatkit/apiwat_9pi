@@ -1,0 +1,23 @@
+<head>
+	<title>Instagram Viewer</title>
+	<link href="layout.css" type="text/css" rel="stylesheet"></link>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.1.0/react.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.1.0/react-dom.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.6.16/browser.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/remarkable/1.6.2/remarkable.min.js"></script>
+	<script type="text/javascript" src="global.js"></script>
+</head>
+<body>
+<div class="wrap">
+	<h1>Instagram Viewer</h1>
+	<div id="signin"></div>
+	<div id="viewer">
+		<div id="hashtag-form"></div>
+		<div id="instagram-result">
+	</div>
+</div>
+<div id="track" style="display:none;">
+</div>
+<script type="text/babel" src="script.js"></script>
+</body>
